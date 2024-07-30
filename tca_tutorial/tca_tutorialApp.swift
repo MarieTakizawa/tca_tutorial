@@ -1,0 +1,17 @@
+import ComposableArchitecture
+import SwiftUI
+
+@main
+struct TCA_tutorialApp: App {
+    // 1回だけ作成することに注意
+    static let store = Store(initialState: CounterFeature.State()) {
+        CounterFeature()
+            ._printChanges() // Reducerが処理する全てのアクションがコンソールに出力
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            CounterView(store: TCA_tutorialApp.store)
+        }
+    }
+}
