@@ -22,6 +22,7 @@
 		AA785F4F2C591E89003305FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA785F522C591E89003305FE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA785F592C592094003305FE /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		AA8709E72C625E2D0045B945 /* tca-tutorial-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "tca-tutorial-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 		AA785F4A2C591E88003305FE /* tca_tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				AA8709E72C625E2D0045B945 /* tca-tutorial-Info.plist */,
 				AA785F4B2C591E88003305FE /* tca_tutorialApp.swift */,
 				AA785F4D2C591E88003305FE /* ContentView.swift */,
 				AA785F4F2C591E89003305FE /* Assets.xcassets */,
@@ -286,6 +288,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tca_tutorial/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tca-tutorial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(MARKETING_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -314,6 +318,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"tca_tutorial/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tca-tutorial-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(MARKETING_VERSION)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
