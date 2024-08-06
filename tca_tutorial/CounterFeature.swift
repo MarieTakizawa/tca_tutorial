@@ -10,6 +10,7 @@ struct CounterFeature {
         var count = 0
         var fact: String?
         var isLoading = false
+        var isTimerRunning = false
     }
     
     // ユーザーが機能で実行できる全てのアクションを保持
@@ -20,7 +21,11 @@ struct CounterFeature {
         // stringはネットワークから取得された文字列の値
         case factResponse(String)
         case factButtonTapped
+        case toggleTimerButtonTapped
+        case timerTick
     }
+    
+    enum CancelID { case timer }
     
     // 状態を次の値に変更し、機能が外部の世界で実行したい効果を返す。ロジック
     var body: some ReducerOf<Self> {
@@ -51,8 +56,28 @@ struct CounterFeature {
                 state.fact = fact
                 state.isLoading = false
                 return .none
+                
+            case .timerTick:
+                state.count += 1
+                state.fact = nil
+                return .none
+                
+            case .toggleTimerButtonTapped:
+                state.isTimerRunning.toggle()
+                if state.isTimerRunning {
+                    return .run { send in
+                        while true {
+                            try await Task.sleep(for: .seconds(1))
+                            await send(.timerTick)
+                        }
+                    }
+                    // effectのキャンセル
+                    .cancellable(id: CancelID.timer)
+                } else {
+                    return .cancel(id: CancelID.timer)
+                    
+                }
             }
-            
         }
     }
 }
@@ -84,6 +109,15 @@ struct CounterView: View {
                 .background(Color.blue.opacity(0.1))
                 .cornerRadius(10)
             }
+            
+            Button(store.isTimerRunning ? "stop timer" : "start timer") {
+                store.send(.toggleTimerButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(store.isTimerRunning ? Color.red.opacity(0.1) : Color.yellow.opacity(0.5))
+            .cornerRadius(10)
+            
             Button("Fact") {
                 store.send(.factButtonTapped)
             }
