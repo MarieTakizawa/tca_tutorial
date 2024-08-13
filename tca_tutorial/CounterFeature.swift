@@ -6,7 +6,7 @@ import SwiftUI
 struct CounterFeature {
     @ObservableState // SwiftUIによって監視
     // 機能がそのジョブを実行するために必要な状態を保持する
-    struct State {
+    struct State: Equatable { // testStoreで等価状態が必要なためEquatable設定
         var count = 0
         var fact: String?
         var isLoading = false
@@ -27,6 +27,9 @@ struct CounterFeature {
     
     enum CancelID { case timer }
     
+    @Dependency(\.continuousClock) var clock
+    @Dependency(\.numberFact) var numberFact
+    
     // 状態を次の値に変更し、機能が外部の世界で実行したい効果を返す。ロジック
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -46,10 +49,7 @@ struct CounterFeature {
                 state.isLoading = true
                 
                 return .run { [count = state.count] send in
-                    let (data, _) = try await URLSession.shared
-                        .data(from: URL(string: "http://numbersapi.com/\(count)")!)
-                    let fact = String(decoding: data, as: UTF8.self)
-                    await send(.factResponse(fact))
+                    try await send(.factResponse(self.numberFact.fetch(count)))
                 }
                 
             case let .factResponse(fact):
@@ -66,8 +66,7 @@ struct CounterFeature {
                 state.isTimerRunning.toggle()
                 if state.isTimerRunning {
                     return .run { send in
-                        while true {
-                            try await Task.sleep(for: .seconds(1))
+                        for await _ in self.clock.timer(interval: .seconds(1)) {
                             await send(.timerTick)
                         }
                     }
