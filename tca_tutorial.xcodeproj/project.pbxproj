@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA249EB72C6B9D5C00A22CA3 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA249EB62C6B9D5C00A22CA3 /* AppFeature.swift */; };
+		AA249EB92C6BA49D00A22CA3 /* AppFeatureTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA249EB82C6BA49D00A22CA3 /* AppFeatureTest.swift */; };
 		AA785F4C2C591E88003305FE /* tca_tutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA785F4B2C591E88003305FE /* tca_tutorialApp.swift */; };
 		AA785F4E2C591E88003305FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA785F4D2C591E88003305FE /* ContentView.swift */; };
 		AA785F502C591E89003305FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA785F4F2C591E89003305FE /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA249EB62C6B9D5C00A22CA3 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
+		AA249EB82C6BA49D00A22CA3 /* AppFeatureTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeatureTest.swift; sourceTree = "<group>"; };
 		AA785F482C591E88003305FE /* tca_tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tca_tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA785F4B2C591E88003305FE /* tca_tutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tca_tutorialApp.swift; sourceTree = "<group>"; };
 		AA785F4D2C591E88003305FE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 				AA785F512C591E89003305FE /* Preview Content */,
 				AA785F592C592094003305FE /* CounterFeature.swift */,
 				AAD22A082C65187800FA3C2D /* NumberFactClient.swift */,
+				AA249EB62C6B9D5C00A22CA3 /* AppFeature.swift */,
 			);
 			path = tca_tutorial;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				AAD229F72C650F4100FA3C2D /* CounterFeatureTests.swift */,
 				AAD22A002C65129400FA3C2D /* tca_tutorialTests.swift */,
+				AA249EB82C6BA49D00A22CA3 /* AppFeatureTest.swift */,
 			);
 			path = tca_tutorialTests;
 			sourceTree = "<group>";
@@ -217,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA785F5A2C592094003305FE /* CounterFeature.swift in Sources */,
+				AA249EB72C6B9D5C00A22CA3 /* AppFeature.swift in Sources */,
 				AA785F4E2C591E88003305FE /* ContentView.swift in Sources */,
 				AA785F4C2C591E88003305FE /* tca_tutorialApp.swift in Sources */,
 				AAD22A092C65187800FA3C2D /* NumberFactClient.swift in Sources */,
@@ -228,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD22A012C65129400FA3C2D /* tca_tutorialTests.swift in Sources */,
+				AA249EB92C6BA49D00A22CA3 /* AppFeatureTest.swift in Sources */,
 				AAD22A072C6512A000FA3C2D /* CounterFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
