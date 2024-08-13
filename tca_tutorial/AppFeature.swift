@@ -13,6 +13,9 @@ struct AppFeature {
         case tab2(CounterFeature.Action)
     }
     
+    // ①親であるAppFeatureReducerでReducerを合成。
+    // ②次に、Scope Reducerを使用して、親のサブドメインにフォーカスして子reducerを実行する
+    
     var body: some ReducerOf<Self> {
         Scope(state: \.tab1, action: \.tab1) {
             CounterFeature()
@@ -28,20 +31,28 @@ struct AppFeature {
 }
 
 struct AppView: View {
-    let store1: StoreOf<CounterFeature>
-    let store2: StoreOf<CounterFeature>
+    let store: StoreOf<AppFeature>
 
     var body: some View {
         TabView {
-            CounterView(store: store1)
+            // ③次に、viewでscopeを使用して親から子ストアを派生し、その子ストアを子viewに渡す
+            CounterView(store: store.scope(state: \.tab1, action: \.tab1))
                 .tabItem {
                     Text("counter 1")
                 }
             
-            CounterView(store: store2)
+            CounterView(store: store.scope(state: \.tab2, action: \.tab2))
                 .tabItem {
                     Text("counter 2")
                 }
         }
     }
+}
+
+#Preview {
+    AppView(
+        store: Store(initialState: AppFeature.State()) {
+            AppFeature()
+        }
+    )
 }
